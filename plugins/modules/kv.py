@@ -20,7 +20,7 @@ def run_module():
     module_args = dict(
         vault_addr=dict(type='str', required=True),
         vault_cacert=dict(type='str', required=False, default=None),
-        client_token=dict(type='str', required=True, no_log=True),
+        client_token=dict(type='str', required=True, no_log=False),
         kv_engine_path=dict(type='str', required=False, default='secret/data'),
         create_if_missing=dict(type='dict', required=False, default=None),
         secret_path=dict(type='str', required=True),
