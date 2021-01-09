@@ -1,0 +1,22 @@
+---
+namespace: jr200
+name: vault
+
+# TODO: the version key should be auto-generated
+version: 0.8.0
+
+readme: README.md
+authors:
+  - Jayshan Raghunandan
+
+description: vault api
+
+license_file: LICENSE
+tags:
+  - vault
+  - security
+
+dependencies: {}
+repository: https://www.github.com/jr200/jr200.vault.git
+homepage: https://www.github.com/jr200/jr200.vault
+issues: https://www.github.com/jr200/jr200.vault/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc
