@@ -8,7 +8,7 @@ from ansible.utils.vars import merge_hash
 from ansible.errors import AnsibleError
 
 from json import loads
-from os import environ
+from os import environ, path
 
 ANSIBLE_METADATA = {
     'metadata_version': '0.1',
@@ -26,7 +26,7 @@ def run_module():
         vault_cacert=dict(type='str', required=False, default=None),
         cached_token=dict(type='bool', required=False, default=True),
         cached_token_path=dict(type='str', required=False,
-                               default="%s/.vault-token" % environ['HOME']),
+                               default="%s/.vault-token" % environ.get('HOME', path.expandusers('~'))),
         method=dict(type='str', required=False, default='token'),
         username=dict(type='str', required=False, default=None),
         auth_path=dict(type='str', required=False, default=None),
@@ -105,7 +105,7 @@ def auth_ldap(p, result):
         p['vault_addr'],
         p['vault_cacert'],
         json_payload={"password": p['secret']},
-        )
+    )
 
     if not _login_did_error(response, result):
         result['client_token'] = response['auth']['client_token']
@@ -118,7 +118,7 @@ def auth_userpass(p, result):
         p['vault_addr'],
         p['vault_cacert'],
         json_payload={"password": p['secret']},
-        )
+    )
 
     if not _login_did_error(response, result):
         result['client_token'] = response['auth']['client_token']

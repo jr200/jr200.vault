@@ -59,7 +59,7 @@ def _get_token_info(p, result):
             p['vault_addr'],
             p['vault_cacert'],
             "token_info"
-            )
+        )
 
         if 'errors' in token_info:
             result['errors'] = token_info['errors']
