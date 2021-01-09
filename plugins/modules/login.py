@@ -26,7 +26,7 @@ def run_module():
         vault_cacert=dict(type='str', required=False, default=None),
         cached_token=dict(type='bool', required=False, default=True),
         cached_token_path=dict(type='str', required=False,
-                               default="%s/.vault-token" % environ.get('HOME', path.expandusers('~'))),
+                               default="%s/.vault-token" % environ.get('HOME', path.expanduser('~'))),
         method=dict(type='str', required=False, default='token'),
         username=dict(type='str', required=False, default=None),
         auth_path=dict(type='str', required=False, default=None),
