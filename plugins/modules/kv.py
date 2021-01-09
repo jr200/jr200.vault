@@ -20,9 +20,10 @@ def run_module():
     module_args = dict(
         vault_addr=dict(type='str', required=True),
         vault_cacert=dict(type='str', required=False, default=None),
-        client_token=dict(type='str', required=True, no_log=True),
+        client_token=dict(type='str', required=True, no_log=False),
         kv_engine_path=dict(type='str', required=False, default='secret/data'),
-        create_if_missing=dict(type='dict', required=False, default=None),
+        create_if_missing=dict(type='dict', required=False,
+                               default=None, no_log=False),
         secret_path=dict(type='str', required=True),
         secret_version=dict(type='int', required=False, default=None),
         kv_version=dict(type='int', required=False, default=2),
@@ -71,6 +72,8 @@ def _lookup_secret(p):
                         p['vault_addr'],
                         p['vault_cacert'],
                         p['create_if_missing'])
+
+        module.fail_json(msg='XXX', **post_res)
 
         res = get(path,
                   p['client_token'],
