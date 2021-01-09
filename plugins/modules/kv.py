@@ -42,7 +42,8 @@ def run_module():
     the_secret = _lookup_secret(module.params)
 
     result['changed'] = False
-    result['secret_path'] = '/'.join([p['kv_engine_path'], p['secret_path']])
+    result['secret_path'] = '/'.join(
+        [module.params['kv_engine_path'], module.params['secret_path']])
     result = merge_hash(result, the_secret)
 
     if 'errors' in result:
