@@ -65,6 +65,8 @@ def _lookup_secret(p):
               p['vault_cacert'],
               'secret')
 
+    res['debug'] = "failed during initial lookup"
+
     # check it was missing
     if 'errors' in res and isinstance(p['create_if_missing'], dict):
         post_res = post(kv_path,
@@ -73,6 +75,7 @@ def _lookup_secret(p):
                         p['vault_cacert'],
                         p['create_if_missing'])
 
+        post_res['debug'] = "failed during post"
         if 'errors' in post_res:
             return post_res
 
