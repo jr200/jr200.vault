@@ -65,7 +65,7 @@ def _lookup_secret(p):
               'secret')
 
     # check it was missing
-    if 'errors' in res and p['create_if_missing'] is not None and isinstance(p['create_if_missing'], dict) and len(p['create_if_missing'] > 0):
+    if 'errors' in res and p['create_if_missing'] is not None and isinstance(p['create_if_missing'], dict) and len(p['create_if_missing']) > 0:
         post_res = post(kv_path,
                         p['client_token'],
                         p['vault_addr'],
