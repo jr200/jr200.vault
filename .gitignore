@@ -49,3 +49,4 @@ local/
 .history
 __pycache__
 .vscode
+*mytest.yml
