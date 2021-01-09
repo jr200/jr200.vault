@@ -73,7 +73,8 @@ def _lookup_secret(p):
                         p['vault_cacert'],
                         p['create_if_missing'])
 
-        module.fail_json(msg='XXX', **post_res)
+        if 'errors' in post_res:
+            return post_res
 
         res = get(path,
                   p['client_token'],
